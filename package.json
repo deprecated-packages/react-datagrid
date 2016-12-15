@@ -1,0 +1,60 @@
+{
+  "name": "react-datagrid",
+  "version": "0.6.0",
+  "description": "Simple react data grid component",
+  "homepage": "http://www.tlapnet.cz",
+  "readme": "",
+  "license": "MIT",
+  "author": {
+    "name": "Tlapnet",
+    "url": "http://www.tlapnet.cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://git@git.tlapnet.cz:libs/datagrid.git"
+  },
+  "main": "lib/DataGrid.js",
+  "scripts": {
+    "test": "NODE_PATH=assets/src mocha --compilers js:babel-register test/**/*.spec.jsx",
+    "dist-hot": "PROFILE='DEVEL' webpack-dev-server -d --hot --port=9090",
+    "dist-demo": "webpack -p",
+    "dist-lib": "babel src --out-dir lib"
+  },
+  "devDependencies": {
+    "babel": "^6.3.13",
+    "babel-cli": "^6.3.17",
+    "babel-core": "^6.3.13",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-transform-flow-strip-types": "^6.14.0",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "babel-runtime": "^6.3.19",
+    "bootstrap": "^3.3.6",
+    "chai": "^3.4.1",
+    "chokidar": "^1.6.0",
+    "core-js": "^2.0.3",
+    "css-loader": "^0.23.0",
+    "eslint": "^2.0.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-flowtype": "^2.18.1",
+    "eslint-plugin-react": "^3.16.1",
+    "file-loader": "^0.8.5",
+    "jsdom": "^7.2.1",
+    "json-loader": "^0.5.4",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "mocha": "^2.3.4",
+    "mocha-babel": "^3.0.0",
+    "postcss-normalize-url": "^3.0.7",
+    "raw-loader": "^0.5.1",
+    "react-datepicker": "^0.33.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  }
+}

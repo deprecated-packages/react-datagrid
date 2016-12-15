@@ -1,0 +1,107 @@
+.data-grid {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display:flex;
+	flex-direction: column;
+	.column-right {
+		text-align: right;
+	}
+	.column-center {
+		text-align: center;
+	}
+	.column-left {
+		text-align: left;
+	}
+	.title {
+
+	}
+	.ellipsis-clip {
+		display: block;
+		width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	thead {
+
+	}
+	tfoot {
+		.table-pager {
+			float: right;
+		}
+	}
+	.scroller {
+		flex: 1 100%;
+		overflow-y: scroll;
+	}
+	table.table {
+		margin-bottom: 0;
+	}
+	table.virtual-header {
+		border-top: 0;
+		border-bottom: 0;
+		//height: 0;
+		thead {
+			border-top: 0;
+			border-bottom: 0;
+			padding: 0;
+			height: 0;
+			tr {
+				border-top: 0;
+				border-bottom: 0;
+				padding: 0;
+				height: 0;
+				th {
+					border-top: 0;
+					border-bottom: 0;
+					padding: 0;
+					height: 0;
+				}
+			}
+		}
+
+	}
+	//here override bootstrap padding inside inline editing cells
+	.form-control {
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+}
+
+.data-grid.narrow {
+	td, th {
+		border: 0;
+	}
+	tr {
+		border-bottom: 1px solid #eee;
+		position: relative;
+	}
+	.row-label {
+		font-weight: bold;
+		display: block;
+		width: 45%;
+		float: left;
+	}
+	.row-value {
+		display: block;
+		width: 50%;
+		margin-left: 45%;
+	}
+	.row-narrow {
+		display: block;
+		width: 100%;
+	}
+	table, thead, tbody, tfoot, th, td, tr {
+		display: block;
+	}
+	.actions {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	.single-column {
+		float: left;
+	}
+}

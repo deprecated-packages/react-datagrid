@@ -7,7 +7,7 @@ export default function _clone(item) {
 		return item;
 	} // null, undefined values check
 
-	var types = [Number, String, Boolean], result = undefined;
+	let types = [Number, String, Boolean], result = undefined;
 
 	// normalizing primitives if someone did new String('aaa'), or new Number('444');
 	types.forEach(function (type) {
@@ -32,7 +32,7 @@ export default function _clone(item) {
 				} else {
 					// it is an object literal
 					result = {};
-					for (var i in item) {
+					for (let i in item) {
 						if (item.hasOwnProperty(i)) {
 							result[i] = _clone(item[i]);
 						}

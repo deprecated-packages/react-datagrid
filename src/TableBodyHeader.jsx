@@ -35,7 +35,7 @@ class TableHeader extends React.Component {
 	}
 
 	renderTitleForNarrow() {
-		var columnsToRender = getColumnsToRender(this.props.model.columns);
+		let columnsToRender = getColumnsToRender(this.props.model.columns);
 		if (this.props.model.narrow && columnsToRender.length === 1) {
 			return <span className="single-column">{columnsToRender[0].label || columnsToRender[0].name}</span>;
 		} else {
@@ -44,7 +44,7 @@ class TableHeader extends React.Component {
 	}
 
 	renderTitleHeader() {
-		var style = {};
+		let style = {};
 		if (!this.props.model.narrow) {
 			style.width = this.props.actionColumnWidth + 'px';
 		}

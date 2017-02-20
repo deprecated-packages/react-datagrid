@@ -25,7 +25,7 @@ class TableRow extends React.Component {
 	}
 
 	renderValue(info, name) {
-		var value = this.props.item[name];
+		let value = this.props.item[name];
 		if (info.dataSource) {
 			value = this._getFromDataSource(value, info);
 		}

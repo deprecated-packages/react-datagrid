@@ -64,11 +64,11 @@ class TableHeaderFilter extends React.Component {
 				<div className="btn-group" role="group">
 					<button className="btn btn-default btn-sm" title={this.props.model.labels.clearFilter}
 						onClick={this.onClickClear}>
-						<i className="icon-remove"/>
+						<i className={this.props.model.icons.removeIcon}/>
 					</button>
 					<button className="btn btn-primary btn-sm" title={this.props.model.labels.filter}
 						onClick={this.onClickFilter}>
-						<i className="icon-filter"/>
+						<i className={this.props.model.icons.filterIcon}/>
 					</button>
 				</div>
 			</th>

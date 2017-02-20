@@ -12,7 +12,7 @@ class DropdownMenu extends React.Component {
 	onClick(item, group, e) {
 		e.preventDefault();
 		e.stopPropagation();
-		var event = {
+		let event = {
 			eventName: SELECT_MENU_ITEM,
 			menuName: this.props.name,
 			item: item,
@@ -24,15 +24,15 @@ class DropdownMenu extends React.Component {
 	renderIcon(item) {
 		if (this.props.selected.includes(item.name)) {
 			if (item.type === 'checker') {
-				return <i className="icon-check"/>;
+				return <i className={this.props.model.icons.checkOnIcon}/>;
 			} else {
-				return <i className="icon-circle"/>;
+				return <i className={this.props.model.icons.radioOnIcon}/>;
 			}
 		} else {
 			if (item.type === 'checker') {
-				return <i className="icon-check-empty"/>;
+				return <i className={this.props.model.icons.checkOffIcon}/>;
 			} else {
-				return <i className="icon-circle-blank"/>;
+				return <i className={this.props.model.icons.radioOffIcon}/>;
 			}
 		}
 	}
@@ -49,7 +49,7 @@ class DropdownMenu extends React.Component {
 
 	renderMenu() {
 		if (this.props.groups) {
-			var items = [];
+			let items = [];
 			Object.keys(this.props.items).map(groupName => {
 				let groupItems = this.props.items[groupName];
 				items.push(groupItems.map(this.renderItem.bind(this, groupName)));
@@ -64,7 +64,7 @@ class DropdownMenu extends React.Component {
 
 	renderIconOrLabel() {
 		if (this.props.icon) {
-			return <i className={this.props.icon} />;
+			return <i className={this.props.icon}/>;
 		} else {
 			return this.props.label;
 		}
@@ -97,6 +97,7 @@ class DropdownMenu extends React.Component {
 }
 
 DropdownMenu.propTypes = {
+	model: React.PropTypes.object.isRequired,
 	name: React.PropTypes.string.isRequired,
 	label: React.PropTypes.string.isRequired,
 	icon: React.PropTypes.string,

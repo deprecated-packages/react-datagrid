@@ -9,10 +9,6 @@
     "name": "Tlapnet",
     "url": "http://www.tlapnet.cz"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://git@git.tlapnet.cz:libs/datagrid.git"
-  },
   "main": "lib/DataGrid.js",
   "scripts": {
     "test": "NODE_PATH=assets/src mocha --compilers js:babel-register test/**/*.spec.jsx",

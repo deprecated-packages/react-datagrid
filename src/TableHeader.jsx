@@ -14,9 +14,9 @@ class TableHeader extends React.Component {
 
 	renderSortArrow(name) {
 		if (this.props.model.sort.columns[name] === 'DESC') {
-			return <i className="icon-sort-down"/>;
+			return <i className={this.props.model.icon.sortDownIcon}/>;
 		} else if (this.props.model.sort.columns[name] === 'ASC') {
-			return <i className="icon-sort-up"/>;
+			return <i className={this.props.model.icon.sortUpIcon}/>;
 		} else {
 			return null;
 		}
@@ -117,7 +117,8 @@ class TableHeader extends React.Component {
 		});
 		return <DropdownMenu
 			items={items}
-			icon="icon-table"
+			icon={this.props.model.icons.menuIcon}
+			model={this.props.model}
 			name="column-settings"
 			menuClassName="dropdown-menu-right"
 			label="Columns"
@@ -127,7 +128,7 @@ class TableHeader extends React.Component {
 	}
 
 	renderTitleForNarrow() {
-		var columnsToRender = getColumnsToRender(this.props.model.columns);
+		let columnsToRender = getColumnsToRender(this.props.model.columns);
 		if (this.props.model.narrow && columnsToRender.length === 1) {
 			return <span className="single-column">{columnsToRender[0].label || columnsToRender[0].name}</span>;
 		} else {
@@ -136,7 +137,7 @@ class TableHeader extends React.Component {
 	}
 
 	renderTitleHeader() {
-		var style = {};
+		let style = {};
 		if (!this.props.model.narrow) {
 			style.width = this.props.actionColumnWidth + 'px';
 		}

@@ -17,7 +17,7 @@ import "../styles/css/app.css";
 import "../styles/css/pe-icon-7-stroke.css";
 import autobind from "./autobind";
 
-var scrollBarWidth = scrollBarWidthMeasure();
+let scrollBarWidth = scrollBarWidthMeasure();
 
 sampleModel.pager.currentPageSize = 100;
 sampleModel.settings.footer = false;
@@ -27,7 +27,7 @@ function getItems(model) {
 	let pager = model.pager;
 	let from = (pager.currentPage - 1) * pager.currentPageSize;
 	let to = from + pager.currentPageSize;
-	var items = deepClone(sampleModel.items);
+	let items = deepClone(sampleModel.items);
 	items = items.filter(i => {
 		let match = true;
 		for (let columnName of Object.keys(model.filter)) {

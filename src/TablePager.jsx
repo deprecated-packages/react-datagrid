@@ -42,7 +42,7 @@ class TablePager extends React.Component {
 	renderPageButtons() {
 		let numberOfPages = this._getNumberOfPages();
 		let MAX_PAGE = numberOfPages < 5 ? numberOfPages : 5;
-		var currentPage = this.props.model.pager.currentPage;
+		let currentPage = this.props.model.pager.currentPage;
 		let buttons = [], to = 1, from = 1;
 		if (currentPage <= MAX_PAGE) {
 			from = 1;
@@ -62,14 +62,14 @@ class TablePager extends React.Component {
 
 	render() {
 		return <span className="table-pager">
-			<button className="btn btn-default btn-xs" onClick={this.onPrevPageClick}><i className="icon-caret-left"/>
+			<button className="btn btn-default btn-xs" onClick={this.onPrevPageClick}><i className={this.props.model.icons.prevIcon}/>
 			</button>
 			{' '}
 			<span className="btn-group">
 				{this.renderPageButtons()}
 			</span>
 			{' '}
-			<button className="btn btn-default btn-xs" onClick={this.onNextPageClick}><i className="icon-caret-right"/>
+			<button className="btn btn-default btn-xs" onClick={this.onNextPageClick}><i className={this.props.model.icons.nextIcon}/>
 			</button>
 		</span>;
 	}
@@ -78,6 +78,7 @@ class TablePager extends React.Component {
 TablePager.propTypes = {
 	onEvent: React.PropTypes.func,
 	model: React.PropTypes.shape({
+		icons: React.PropTypes.object.isRequired,
 		pager: React.PropTypes.shape({
 			count: React.PropTypes.number.isRequired,
 			currentPageSize: React.PropTypes.number.isRequired,

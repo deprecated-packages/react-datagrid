@@ -32,7 +32,7 @@ class TableRowEditor extends React.Component {
 	}
 
 	renderValue(info, name) {
-		var value = this.state.item[name];
+		let value = this.state.item[name];
 		if (info.dataSource) {
 			const options = this.props.dataSources[info.dataSource];
 			return <Select className="form-control-block"

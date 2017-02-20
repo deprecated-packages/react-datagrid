@@ -14,9 +14,9 @@ class TableHeader extends React.Component {
 
 	renderSortArrow(name) {
 		if (this.props.model.sort.columns[name] === 'DESC') {
-			return <i className={this.props.model.icon.sortDownIcon}/>;
+			return <i className={this.props.model.icons.sortDownIcon}/>;
 		} else if (this.props.model.sort.columns[name] === 'ASC') {
-			return <i className={this.props.model.icon.sortUpIcon}/>;
+			return <i className={this.props.model.icons.sortUpIcon}/>;
 		} else {
 			return null;
 		}

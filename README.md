@@ -10,6 +10,7 @@ Smart grid component for react with sorting and filtering.
  * Infinite scrolling
  * Configurable UI with overridable renderers
  * Simple inline editing
+ * Customizable icons for built in operations
 
 ## Project setup
 

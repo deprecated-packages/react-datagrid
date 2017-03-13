@@ -69,7 +69,7 @@ class TableHeader extends React.Component {
 			return <button key={name}
 				className="btn btn-xs btn-default"
 				onClick={this.onActionButtonClick.bind(this, name)}
-				title={action.label}>
+				data-title={action.label}>
 				<i className={action.icon}/>
 			</button>;
 		} else {

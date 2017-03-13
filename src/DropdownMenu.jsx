@@ -82,7 +82,7 @@ class DropdownMenu extends React.Component {
 		return <span className={className}>
 			<button className="btn btn-default btn-xs dropdown-toggle"
 				type="button"
-				title={this.props.label}
+				data-title={this.props.label}
 				id={this.props.name}
 				data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="true">

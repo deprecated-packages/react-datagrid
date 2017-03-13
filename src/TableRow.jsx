@@ -79,7 +79,7 @@ class TableRow extends React.Component {
 			return <button key={name}
 				onClick={this.onActionButtonClick.bind(this, name)}
 				className="btn btn-xs btn-default"
-				title={action.label}><i className={action.icon}/></button>;
+				data-title={action.label}><i className={action.icon}/></button>;
 		} else {
 			return <button key={name}
 				onClick={this.onActionButtonClick.bind(this, name)}

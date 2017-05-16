@@ -4,6 +4,7 @@
 	@select-color: #dedede;
 	position: relative;
 	//background-color: #fff;
+	//Menu with options
 	.menu {
 		background-color: #fff;
 		z-index: 99999999;
@@ -13,7 +14,7 @@
 		overflow-y: auto;
 		.menu-option {
 			padding-left: @padding;
-			height: @input-height;
+			min-height: @input-height;
 			line-height: @input-height;
 			&.selected {
 				background-color: @select-color;
@@ -21,9 +22,10 @@
 		}
 		box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
 	}
+	//The input line with caret
 	&.focus .select-line {
 		border-bottom: 2px solid @brand-primary;
-		padding-bottom: 4px;
+		padding-bottom: @padding - 1;
 	}
 	.select-line {
 		position: relative;
@@ -55,6 +57,7 @@
 			line-height: @input-height;
 			height: @input-height;
 		}
+		//Values in multiselect
 		.tag {
 			display: flex;
 			margin-right: 3px;

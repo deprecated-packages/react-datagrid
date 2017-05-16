@@ -24,11 +24,11 @@ class DataGrid extends React.Component {
 	}
 
 	componentDidMount() {
-		window.addEventListener('resize', this.onResize, true);
+		window.addEventListener("resize", this.onResize, true);
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener('resize', this.onResize, true);
+		window.removeEventListener("resize", this.onResize, true);
 	}
 
 	renderBody() {
@@ -90,7 +90,7 @@ class DataGrid extends React.Component {
 	}
 
 	render() {
-		let className = "data-grid " + (this.props.className || '');
+		let className = "data-grid " + (this.props.className || "");
 		if (this.props.model.narrow) {
 			className += " narrow";
 		}
@@ -103,19 +103,21 @@ class DataGrid extends React.Component {
 			//so the columns match with header
 			actionColumnWidth = this.props.actionColumnWidth - (infiniteScroll ? this.props.scrollBarWidth : 0);
 		}
-		return <div className={className} ref={(c) => {this._dataGridRootNode = c;}}>
+		return <div className={className} ref={(c) => {
+			this._dataGridRootNode = c;
+		}}>
 			{this.renderTableTitle()}
-			<table className={this.props.tableClassName} style={{tableLayout: 'fixed'}}>
+			<table className={this.props.tableClassName} style={{tableLayout: "fixed"}}>
 				{this.renderHeader()}
 			</table>
 			<div className={scrollerClassName}>
-				<table className={"virtual-header " + this.props.tableClassName} style={{tableLayout: 'fixed'}}>
+				<table className={"virtual-header " + this.props.tableClassName} style={{tableLayout: "fixed"}}>
 					<TableBodyHeader
 						model={this.props.model}
 						actionColumnWidth={actionColumnWidth}
 						onEvent={this.props.onEvent}/>
 					<tbody>
-						{this.renderBody()}
+					{this.renderBody()}
 					</tbody>
 					{this.renderFooter()}
 				</table>
@@ -160,7 +162,7 @@ DataGrid.propTypes = {
 			title: React.PropTypes.string,
 			records: React.PropTypes.string,
 			filter: React.PropTypes.string,
-			itemsPerPage: React.PropTypes.string,
+			itemsPerPage: React.PropTypes.string
 		}).isRequired,
 		pager: React.PropTypes.shape({
 			currentPageSize: React.PropTypes.number,

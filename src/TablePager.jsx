@@ -1,6 +1,6 @@
 import React from "react";
 import autobind from "./autobind";
-import {NEXT_PAGE, PREV_PAGE, GOTO_PAGE} from './actions';
+import {GOTO_PAGE, NEXT_PAGE, PREV_PAGE} from "./actions";
 
 class TablePager extends React.Component {
 
@@ -62,14 +62,16 @@ class TablePager extends React.Component {
 
 	render() {
 		return <span className="table-pager">
-			<button className="btn btn-default btn-xs" onClick={this.onPrevPageClick}><i className={this.props.model.icons.prevIcon}/>
+			<button className="btn btn-default btn-xs" onClick={this.onPrevPageClick}><i
+				className={this.props.model.icons.prevIcon}/>
 			</button>
-			{' '}
+			{" "}
 			<span className="btn-group">
 				{this.renderPageButtons()}
 			</span>
-			{' '}
-			<button className="btn btn-default btn-xs" onClick={this.onNextPageClick}><i className={this.props.model.icons.nextIcon}/>
+			{" "}
+			<button className="btn btn-default btn-xs" onClick={this.onNextPageClick}><i
+				className={this.props.model.icons.nextIcon}/>
 			</button>
 		</span>;
 	}
@@ -82,7 +84,7 @@ TablePager.propTypes = {
 		pager: React.PropTypes.shape({
 			count: React.PropTypes.number.isRequired,
 			currentPageSize: React.PropTypes.number.isRequired,
-			currentPage: React.PropTypes.number.isRequired,
+			currentPage: React.PropTypes.number.isRequired
 		}).isRequired
 	})
 };

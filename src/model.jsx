@@ -9,11 +9,11 @@ function getRandomInt(min, max) {
 
 let names = ["John Doe", "Franta Voprsalek", "Josef Dohnal", "Alois Vosahlo"];
 let labels = [[], [2], [2, 1], [1], [3], [1, 2]];
-let birthDate = ['1921-12-01', '1978-12-01', '1965-12-01', '1984-12-01', '1995-03-01'];
-let messages = ['Hello', 'Hi', 'No cant'];
+let birthDate = ["1921-12-01", "1978-12-01", "1965-12-01", "1984-12-01", "1995-03-01"];
+let messages = ["Hello", "Hi", "No cant"];
 
 let model = defaultModel;
-model.idColumn = 'myId';
+model.idColumn = "myId";
 model.items = [];
 for (let i = 0; i < 3123; i++) {
 	model.items.push({
@@ -28,12 +28,12 @@ model.edit = {
 	selected: [1],
 	buttons: {
 		cancel: {
-			label: 'cancel',
-			icon: 'icon-remove'
+			label: "cancel",
+			icon: "icon-remove"
 		},
 		edit: {
-			label: 'save',
-			icon: 'icon-save'
+			label: "save",
+			icon: "icon-save"
 		}
 	}
 };
@@ -41,81 +41,81 @@ model.dataSources = {
 	labels: [
 		{
 			id: 1,
-			name: 'Good',
-			color: 'green'
+			name: "Good",
+			color: "green"
 		},
 		{
 			id: 2,
-			name: 'Bad',
-			color: 'red'
+			name: "Bad",
+			color: "red"
 		},
 		{
 			id: 3,
-			name: 'VIP',
-			color: 'blue'
+			name: "VIP",
+			color: "blue"
 		}
 	]
 };
 model.columns = {
 	myId: {
-		label: '#', //default key name myId
+		label: "#", //default key name myId
 		show: true, //default false
-		width: '40px',
+		width: "40px",
 		position: 1,
 		render: (value) => <div>#{value}</div>//default CellRender
 	},
 	name: {
-		label: 'Jméno Příjmení',
+		label: "Jméno Příjmení",
 		position: 2,
-		width: '150px',
+		width: "150px",
 		show: true,
 		render: (value) => <span>/{value}/</span>
 	},
 	birthDate: {
-		label: 'Věk',
+		label: "Věk",
 		position: 4,
 		show: true,
-		width: '100px',
+		width: "100px",
 		render: (value) => <div>{moment(value).fromNow()}</div>
 	},
 	message: {
 		show: true,
 		position: 5,
-		label: 'Zpráva'
+		label: "Zpráva"
 	},
 	active: {
 		show: true,
 		position: 6,
-		label: 'Active',
-		editType: 'checkbox'
+		label: "Active",
+		editType: "checkbox"
 	},
 	labels: {
 		position: 7,
-		dataSource: 'labels',
-		labelId: 'name',
-		valueId: 'id',
-		id: 'id', //default id
+		dataSource: "labels",
+		labelId: "name",
+		valueId: "id",
+		id: "id", //default id
 		show: true,
 		multi: true,
 		clearable: false,
 		render: (labels) => <div>{labels.map(label => <span key={label.id} className="label"
-			style={{backgroundColor: label.color, color: 'white'}}>{label.name}</span>)}</div>
+			style={{backgroundColor: label.color, color: "white"}}>{label.name}</span>)}</div>
 	}
 };
 model.headerActions = {
 	edit: {
-		label: 'Přidat',
-		icon: 'icon-plus'
+		label: "Přidat",
+		icon: "icon-plus"
 	},
 	filter: {
-		label: 'Filtrovat',
-		icon: 'icon-filter'
+		label: "Filtrovat",
+		icon: "icon-filter"
 	}
 };
 model.actions = {
 	edit: {
-		label: 'Upravit',
-		icon: 'icon-edit'
+		label: "Upravit",
+		icon: "icon-edit"
 	}
 };
 model.settings = {
@@ -126,11 +126,11 @@ model.settings = {
 	editableColumns: true
 };
 model.labels = {
-	title: 'Uživatelé',
-	records: 'záznamů',
-	filter: 'Filtrovat',
-	itemsPerPage: 'na stránku',
-	clearFilter: 'Zruš filtr'
+	title: "Uživatelé",
+	records: "záznamů",
+	filter: "Filtrovat",
+	itemsPerPage: "na stránku",
+	clearFilter: "Zruš filtr"
 };
 model.pager = {
 	currentPageSize: 10,

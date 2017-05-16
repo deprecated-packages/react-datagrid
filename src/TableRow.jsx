@@ -1,6 +1,6 @@
 import React from "react";
 import autobind from "./autobind";
-import {ROW_BUTTON_CLICK, ROW_CLICK} from './actions';
+import {ROW_BUTTON_CLICK, ROW_CLICK} from "./actions";
 import {getColumnsToRender} from "./columnsHelper";
 class TableRow extends React.Component {
 
@@ -104,7 +104,9 @@ class TableRow extends React.Component {
 		let className = this.props.selected ? "active" : "";
 		return <tr onClick={this.onRowClick} className={className}>
 			{this.renderRowBody()}
-			<td className="column-right actions"><div className="btn-group">{this.renderActions()}</div></td>
+			<td className="column-right actions">
+				<div className="btn-group">{this.renderActions()}</div>
+			</td>
 		</tr>;
 	}
 }

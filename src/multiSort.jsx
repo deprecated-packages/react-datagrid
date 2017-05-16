@@ -3,7 +3,7 @@ export default function (order, columns, a, b) {
 		let prop = order[i];
 		let dir = columns[prop];
 		if (a[prop] !== b[prop]) {
-			if (dir === 'ASC') {
+			if (dir === "ASC") {
 				return a[prop] < b[prop] ? -1 : 1;
 			} else {
 				return a[prop] > b[prop] ? -1 : 1;

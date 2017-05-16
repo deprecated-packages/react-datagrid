@@ -1,6 +1,6 @@
 import React from "react";
 import autobind from "./autobind";
-import {HEADER_BUTTON_CLICK, HEADER_CLICK} from './actions';
+import {HEADER_BUTTON_CLICK, HEADER_CLICK} from "./actions";
 import TableHeaderFilter from "./TableHeaderFilter";
 import DropdownMenu from "./DropdownMenu";
 import {getColumnsToRender} from "./columnsHelper";
@@ -13,9 +13,9 @@ class TableHeader extends React.Component {
 	}
 
 	renderSortArrow(name) {
-		if (this.props.model.sort.columns[name] === 'DESC') {
+		if (this.props.model.sort.columns[name] === "DESC") {
 			return <i className={this.props.model.icons.sortDownIcon}/>;
-		} else if (this.props.model.sort.columns[name] === 'ASC') {
+		} else if (this.props.model.sort.columns[name] === "ASC") {
 			return <i className={this.props.model.icons.sortUpIcon}/>;
 		} else {
 			return null;
@@ -106,12 +106,12 @@ class TableHeader extends React.Component {
 		}
 		let items = Object.keys(this.props.model.columns).map(columnName => {
 			let label = columnName;
-			if (this.props.model.columns[columnName].hasOwnProperty('label')) {
+			if (this.props.model.columns[columnName].hasOwnProperty("label")) {
 				label = this.props.model.columns[columnName].label;
 			}
 			return {
 				label: label,
-				type: 'checker',
+				type: "checker",
 				name: columnName
 			};
 		});
@@ -139,13 +139,13 @@ class TableHeader extends React.Component {
 	renderTitleHeader() {
 		let style = {};
 		if (!this.props.model.narrow) {
-			style.width = this.props.actionColumnWidth + 'px';
+			style.width = this.props.actionColumnWidth + "px";
 		}
 		return <tr className="table-header">{this.renderTitleCells()}
 			<th className="column-right" style={style}>
 				{this.renderTitleForNarrow()}
 				{this.renderTitleButtons()}
-				{' '}
+				{" "}
 				{this.renderColumnsSettingsMenu()}
 			</th>
 		</tr>;
@@ -161,8 +161,8 @@ class TableHeader extends React.Component {
 
 	render() {
 		return <thead>
-			{this.renderTitleHeader()}
-			{this.renderFilterHeader()}
+		{this.renderTitleHeader()}
+		{this.renderFilterHeader()}
 		</thead>;
 	}
 }

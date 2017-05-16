@@ -23,13 +23,13 @@ class DropdownMenu extends React.Component {
 
 	renderIcon(item) {
 		if (this.props.selected.includes(item.name)) {
-			if (item.type === 'checker') {
+			if (item.type === "checker") {
 				return <i className={this.props.model.icons.checkOnIcon}/>;
 			} else {
 				return <i className={this.props.model.icons.radioOnIcon}/>;
 			}
 		} else {
-			if (item.type === 'checker') {
+			if (item.type === "checker") {
 				return <i className={this.props.model.icons.checkOffIcon}/>;
 			} else {
 				return <i className={this.props.model.icons.radioOffIcon}/>;
@@ -41,7 +41,7 @@ class DropdownMenu extends React.Component {
 		return <li key={uniqKey}>
 			<a href="#" onClick={this.onClick.bind(this, item, group)}>
 				{this.renderIcon(item)}
-				{' '}
+				{" "}
 				{item.label}
 			</a>
 		</li>;
@@ -58,7 +58,7 @@ class DropdownMenu extends React.Component {
 			items.pop();
 			return items;
 		} else {
-			return this.props.items.map(this.renderItem.bind(this, 'nogroup'));
+			return this.props.items.map(this.renderItem.bind(this, "nogroup"));
 		}
 	}
 
@@ -86,7 +86,7 @@ class DropdownMenu extends React.Component {
 				id={this.props.name}
 				data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="true">
-				{this.renderIconOrLabel()}{' '}
+				{this.renderIconOrLabel()}{" "}
 				<span className="caret"/>
 			</button>
 			<ul className={menuClassName} aria-labelledby={this.props.name}>

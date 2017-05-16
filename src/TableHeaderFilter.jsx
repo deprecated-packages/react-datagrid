@@ -1,6 +1,6 @@
 import React from "react";
 import autobind from "./autobind";
-import {CLEAR_FILTER_BUTTON_CLICK, FILTER_BUTTON_CLICK} from './actions';
+import {CLEAR_FILTER_BUTTON_CLICK, FILTER_BUTTON_CLICK} from "./actions";
 import {getColumnsToRender} from "./columnsHelper";
 import deepClone from "./deepClone";
 
@@ -49,7 +49,7 @@ class TableHeaderFilter extends React.Component {
 				type="text"
 				value={this.state.filter[column.name]}
 				onChange={this.onChangeFilter.bind(this, column)}
-				placeholder={this.props.model.narrow ? column.label || column.name : ''}
+				placeholder={this.props.model.narrow ? column.label || column.name : ""}
 				name={column.name} className="form-control input-sm"/>
 		</th>;
 	}

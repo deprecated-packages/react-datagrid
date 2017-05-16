@@ -20,7 +20,7 @@ class TableHeader extends React.Component {
 				key={column.name}
 				style={style}>
 				<span className="ellipsis-clip">
-					{' '}
+					{" "}
 				</span>
 			</th>;
 		} else {
@@ -46,18 +46,18 @@ class TableHeader extends React.Component {
 	renderTitleHeader() {
 		let style = {};
 		if (!this.props.model.narrow) {
-			style.width = this.props.actionColumnWidth + 'px';
+			style.width = this.props.actionColumnWidth + "px";
 		}
 		return <tr className="table-header">{this.renderTitleCells()}
 			<th className="column-right" style={style}>
-				{' '}
+				{" "}
 			</th>
 		</tr>;
 	}
 
 	render() {
 		return <thead>
-			{this.renderTitleHeader()}
+		{this.renderTitleHeader()}
 		</thead>;
 	}
 }

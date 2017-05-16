@@ -12,14 +12,14 @@ class TableFooter extends React.Component {
 
 	render() {
 		return <tfoot>
-			<tr onClick={this.onRowClick}>
-				<td colSpan={getColumnsToRender(this.props.model.columns).length + 1}>
-					<span className="total-count">{this.props.model.pager.count} {this.props.model.labels.records}</span>
-					{' '}
-					<TablePagerPageSize {...this.props} onEvent={this.props.onEvent}/>
-					<TablePager {...this.props} />
-				</td>
-			</tr>
+		<tr onClick={this.onRowClick}>
+			<td colSpan={getColumnsToRender(this.props.model.columns).length + 1}>
+				<span className="total-count">{this.props.model.pager.count} {this.props.model.labels.records}</span>
+				{" "}
+				<TablePagerPageSize {...this.props} onEvent={this.props.onEvent}/>
+				<TablePager {...this.props} />
+			</td>
+		</tr>
 		</tfoot>;
 	}
 }

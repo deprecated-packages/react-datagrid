@@ -1,9 +1,9 @@
 import React from "react";
 import autobind from "./autobind";
-import {ROW_BUTTON_CLICK, ROW_CLICK} from './actions';
+import {ROW_BUTTON_CLICK, ROW_CLICK} from "./actions";
 import {getColumnsToRender} from "./columnsHelper";
-import Select from 'react-select';
-import deepClone from './deepClone';
+import Select from "react-select";
+import deepClone from "./deepClone";
 
 class TableRowEditor extends React.Component {
 
@@ -47,9 +47,9 @@ class TableRowEditor extends React.Component {
 				clearable={info.clearable}
 				onChange={this.onChangeSelectValue.bind(this, name)}
 			/>;
-		} else if (info.editType === 'checkbox') {
+		} else if (info.editType === "checkbox") {
 			return <input
-				checked={value ? 'checked': false}
+				checked={value ? "checked" : false}
 				name={name}
 				type="checkbox"
 				onChange={this.onChangeValue}

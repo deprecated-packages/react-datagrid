@@ -1,5 +1,5 @@
 export default {
-	idColumn: 'id',
+	idColumn: "id",
 	items: [],
 	selected: [],
 	dataSources: {},
@@ -24,11 +24,11 @@ export default {
 		buttons: {}
 	},
 	labels: {
-		title: 'Users',
-		records: 'records',
-		filter: 'Filter',
-		itemsPerPage: 'per page',
-		clearFilter: 'Clear Filter'
+		title: "Users",
+		records: "records",
+		filter: "Filter",
+		itemsPerPage: "per page",
+		clearFilter: "Clear Filter"
 	},
 	pager: {
 		currentPageSize: 1,
@@ -36,17 +36,17 @@ export default {
 		count: 1
 	},
 	icons: {
-		deleteIcon: 'icon-delete',
-		filterIcon: 'icon-filter',
-		removeIcon: 'icon-remove',
-		radioOnIcon: 'icon-circle',
-		radioOffIcon: 'icon-circle-blank',
-		checkOnIcon: 'icon-check',
-		checkOffIcon: 'icon-check-empty',
-		sortUpIcon: 'icon-sort-up',
-		sortDownIcon: 'icon-sort-down',
-		menuIcon: 'icon-table',
-		nextIcon: 'icon-caret-left',
-		prevIcon: 'icon-caret-right'
+		deleteIcon: "icon-delete",
+		filterIcon: "icon-filter",
+		removeIcon: "icon-remove",
+		radioOnIcon: "icon-circle",
+		radioOffIcon: "icon-circle-blank",
+		checkOnIcon: "icon-check",
+		checkOffIcon: "icon-check-empty",
+		sortUpIcon: "icon-sort-up",
+		sortDownIcon: "icon-sort-down",
+		menuIcon: "icon-table",
+		nextIcon: "icon-caret-left",
+		prevIcon: "icon-caret-right"
 	}
 };

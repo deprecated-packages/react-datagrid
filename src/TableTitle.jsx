@@ -11,7 +11,7 @@ class TableTitle extends React.Component {
 	render() {
 		if (this.props.model.settings.title) {
 			return <div className="title" onClick={this.onRowClick}>
-					{this.props.model.labels.title}
+				{this.props.model.labels.title}
 			</div>;
 		} else {
 			return null;

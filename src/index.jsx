@@ -51,8 +51,8 @@ class Wrapper extends React.Component {
 		model.narrow = false;
 		model.headerActions = {
 			plus: {
-				label: 'Plus',
-				icon: 'icon-plus'
+				label: "Plus",
+				icon: "icon-plus"
 			}
 		};
 		this.state = {model: model};
@@ -79,21 +79,21 @@ class Wrapper extends React.Component {
 		if (event.eventName === EVENT.PREV_PAGE) {
 			model.pager.currentPage--;
 		}
-		if (event.eventName === EVENT.SELECT_MENU_ITEM && event.menuName === 'column-settings') {
+		if (event.eventName === EVENT.SELECT_MENU_ITEM && event.menuName === "column-settings") {
 			model.columns[event.item.name].show = !model.columns[event.item.name].show;
 		}
 		if (event.eventName === EVENT.HEADER_CLICK) {
-			if (model.sort.columns[event.columnName] === 'ASC') {
-				model.sort.columns[event.columnName] = 'DESC';
-			} else if (model.sort.columns[event.columnName] === 'DESC') {
+			if (model.sort.columns[event.columnName] === "ASC") {
+				model.sort.columns[event.columnName] = "DESC";
+			} else if (model.sort.columns[event.columnName] === "DESC") {
 				delete model.sort.columns[event.columnName];
 				model.sort.order = model.sort.order.filter(i => i !== event.columnName);
 			} else {
-				model.sort.columns[event.columnName] = 'ASC';
+				model.sort.columns[event.columnName] = "ASC";
 				model.sort.order.push(event.columnName);
 			}
 		}
-		if (event.eventName === EVENT.HEADER_BUTTON_CLICK && event.buttonName === 'filter') {
+		if (event.eventName === EVENT.HEADER_BUTTON_CLICK && event.buttonName === "filter") {
 			model.settings.filterHeader = !model.settings.filterHeader;
 		}
 		if (event.eventName === EVENT.CLEAR_FILTER_BUTTON_CLICK) {
@@ -109,11 +109,11 @@ class Wrapper extends React.Component {
 			model.pager.currentPageSize = event.pageSize;
 		}
 		model.items = getItems(model);
-		if (event.eventName === EVENT.ROW_BUTTON_CLICK && event.buttonName === 'edit') {
+		if (event.eventName === EVENT.ROW_BUTTON_CLICK && event.buttonName === "edit") {
 			for (let i = 0; i < model.items.length; i++) {
 				if (model.items[i].myId === event.item.myId) {
 					model.items[i] = event.item;
-					console.log('saved');
+					console.log("saved");
 				}
 			}
 		}
@@ -132,4 +132,4 @@ class Wrapper extends React.Component {
 	}
 }
 
-render(<Wrapper />, document.getElementById('data-grid-mount'));
+render(<Wrapper />, document.getElementById("data-grid-mount"));

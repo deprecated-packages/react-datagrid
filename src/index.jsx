@@ -1,4 +1,5 @@
 /*eslint no-console: 0*/
+/*eslint max-statements: 0*/
 import React from "react";
 import update from "react-addons-update";
 import {render} from "react-dom";

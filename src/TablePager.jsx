@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import {GOTO_PAGE, NEXT_PAGE, PREV_PAGE} from "./actions";
 
@@ -78,13 +79,13 @@ class TablePager extends React.Component {
 }
 
 TablePager.propTypes = {
-	onEvent: React.PropTypes.func,
-	model: React.PropTypes.shape({
-		icons: React.PropTypes.object.isRequired,
-		pager: React.PropTypes.shape({
-			count: React.PropTypes.number.isRequired,
-			currentPageSize: React.PropTypes.number.isRequired,
-			currentPage: React.PropTypes.number.isRequired
+	onEvent: PropTypes.func,
+	model: PropTypes.shape({
+		icons: PropTypes.object.isRequired,
+		pager: PropTypes.shape({
+			count: PropTypes.number.isRequired,
+			currentPageSize: PropTypes.number.isRequired,
+			currentPage: PropTypes.number.isRequired
 		}).isRequired
 	})
 };

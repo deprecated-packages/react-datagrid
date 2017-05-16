@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import {SET_PAGE_SIZE} from "./actions";
 
@@ -54,13 +55,13 @@ class TablePagerPageSize extends React.Component {
 }
 
 TablePagerPageSize.propTypes = {
-	onEvent: React.PropTypes.func,
-	model: React.PropTypes.shape({
-		pager: React.PropTypes.shape({
-			currentPageSize: React.PropTypes.number.isRequired
+	onEvent: PropTypes.func,
+	model: PropTypes.shape({
+		pager: PropTypes.shape({
+			currentPageSize: PropTypes.number.isRequired
 		}).isRequired,
-		labels: React.PropTypes.object.isRequired,
-		narrow: React.PropTypes.bool.isRequired
+		labels: PropTypes.object.isRequired,
+		narrow: PropTypes.bool.isRequired
 	}).isRequired
 };
 

@@ -1,0 +1,72 @@
+.simple-select {
+	@input-height: 28px;
+	@padding: 5px;
+	@select-color: #dedede;
+	position: relative;
+	//background-color: #fff;
+	.menu {
+		background-color: #fff;
+		z-index: 99999999;
+		position: absolute;
+		max-height: 300px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		.menu-option {
+			padding-left: @padding;
+			height: @input-height;
+			line-height: @input-height;
+			&.selected {
+				background-color: @select-color;
+			}
+		}
+		box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+	}
+	&.focus .select-line {
+		border-bottom: 2px solid @brand-primary;
+		padding-bottom: 4px;
+	}
+	.select-line {
+		position: relative;
+		display: flex;
+		padding: @padding;
+		//box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+		border-bottom: 1px solid #ddd;
+		input {
+			flex-grow: 1;
+			line-height: @input-height;
+			height: @input-height;
+			background: transparent;
+			border: 0;
+			outline: 0;
+		}
+		.clear-btn {
+			position: absolute;
+			right: 20px;
+			width: 20px;
+			display: inline-block;
+			text-align: center;
+			line-height: @input-height;
+			height: @input-height;
+		}
+		.caret-btn {
+			width: 20px;
+			display: inline-block;
+			text-align: center;
+			line-height: @input-height;
+			height: @input-height;
+		}
+		.tag {
+			display: flex;
+			margin-right: 3px;
+			background-color: @select-color;
+			line-height: @input-height;
+			text-align: center;
+			padding-left: 5px;
+			.tag-remove {
+				text-align: center;
+				width: 20px;
+				display: inline-block;
+			}
+		}
+	}
+}

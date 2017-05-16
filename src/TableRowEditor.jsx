@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import {ROW_BUTTON_CLICK, ROW_CLICK} from "./actions";
 import {getColumnsToRender} from "./columnsHelper";
-import Select from "react-select";
+import Select from "./Select";
 import deepClone from "./deepClone";
 
 class TableRowEditor extends React.Component {
@@ -31,16 +32,18 @@ class TableRowEditor extends React.Component {
 		this.setState({item: item});
 	}
 
+	loadOptions(info, input, callback) {
+		const options = this.props.dataSources[info.dataSource];
+		return callback(null, {options});
+	}
+
 	renderValue(info, name) {
 		let value = this.state.item[name];
 		if (info.dataSource) {
-			const options = this.props.dataSources[info.dataSource];
 			return <Select className="form-control-block"
 				name={name}
-				options={options}
+				loadOptions={this.loadOptions.bind(this, info)}
 				value={value}
-				simpleValue={info.simpleValue}
-				cache={false}
 				multi={info.multi}
 				valueKey={info.valueId}
 				labelKey={info.labelId}
@@ -140,13 +143,13 @@ class TableRowEditor extends React.Component {
 }
 
 TableRowEditor.propTypes = {
-	item: React.PropTypes.object.isRequired,
-	dataSources: React.PropTypes.object,
-	columns: React.PropTypes.object.isRequired,
-	actions: React.PropTypes.object,
-	onEvent: React.PropTypes.func.isRequired,
-	selected: React.PropTypes.bool.isRequired,
-	narrow: React.PropTypes.bool.isRequired
+	item: PropTypes.object.isRequired,
+	dataSources: PropTypes.object,
+	columns: PropTypes.object.isRequired,
+	actions: PropTypes.object,
+	onEvent: PropTypes.func.isRequired,
+	selected: PropTypes.bool.isRequired,
+	narrow: PropTypes.bool.isRequired
 };
 
 TableRowEditor.defaultProps = {

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import TablePager from "./TablePager";
 import TablePagerPageSize from "./TablePagerPageSize";
@@ -25,17 +26,17 @@ class TableFooter extends React.Component {
 }
 
 TableFooter.propTypes = {
-	model: React.PropTypes.shape({
-		labels: React.PropTypes.shape({
-			total: React.PropTypes.string,
-			records: React.PropTypes.string
+	model: PropTypes.shape({
+		labels: PropTypes.shape({
+			total: PropTypes.string,
+			records: PropTypes.string
 		}),
-		columns: React.PropTypes.object.isRequired,
-		pager: React.PropTypes.shape({
-			count: React.PropTypes.number.isRequired
+		columns: PropTypes.object.isRequired,
+		pager: PropTypes.shape({
+			count: PropTypes.number.isRequired
 		}).isRequired
 	}),
-	onEvent: React.PropTypes.func
+	onEvent: PropTypes.func
 };
 
 export default TableFooter;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 
 class TableTitle extends React.Component {
@@ -20,15 +21,15 @@ class TableTitle extends React.Component {
 }
 
 TableTitle.propTypes = {
-	model: React.PropTypes.shape({
-		labels: React.PropTypes.shape({
-			title: React.PropTypes.string
+	model: PropTypes.shape({
+		labels: PropTypes.shape({
+			title: PropTypes.string
 		}),
-		settings: React.PropTypes.shape({
-			title: React.PropTypes.bool
+		settings: PropTypes.shape({
+			title: PropTypes.bool
 		})
 	}),
-	onEvent: React.PropTypes.func
+	onEvent: PropTypes.func
 };
 
 export default TableTitle;

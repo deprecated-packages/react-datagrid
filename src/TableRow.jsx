@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import {ROW_BUTTON_CLICK, ROW_CLICK} from "./actions";
 import {getColumnsToRender} from "./columnsHelper";
@@ -112,13 +113,13 @@ class TableRow extends React.Component {
 }
 
 TableRow.propTypes = {
-	item: React.PropTypes.object.isRequired,
-	dataSources: React.PropTypes.object,
-	columns: React.PropTypes.object.isRequired,
-	actions: React.PropTypes.object,
-	onEvent: React.PropTypes.func.isRequired,
-	selected: React.PropTypes.bool.isRequired,
-	narrow: React.PropTypes.bool.isRequired
+	item: PropTypes.object.isRequired,
+	dataSources: PropTypes.object,
+	columns: PropTypes.object.isRequired,
+	actions: PropTypes.object,
+	onEvent: PropTypes.func.isRequired,
+	selected: PropTypes.bool.isRequired,
+	narrow: PropTypes.bool.isRequired
 };
 
 TableRow.defaultProps = {

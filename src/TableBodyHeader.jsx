@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import {getColumnsToRender} from "./columnsHelper";
 
@@ -31,6 +32,8 @@ class TableHeader extends React.Component {
 	renderTitleCells() {
 		if (!this.props.model.narrow) {
 			return getColumnsToRender(this.props.model.columns).map(this.renderTitleCell);
+		} else {
+			return null;
 		}
 	}
 
@@ -63,12 +66,12 @@ class TableHeader extends React.Component {
 }
 
 TableHeader.propTypes = {
-	model: React.PropTypes.shape({
-		columns: React.PropTypes.object.isRequired,
-		narrow: React.PropTypes.bool.isRequired
+	model: PropTypes.shape({
+		columns: PropTypes.object.isRequired,
+		narrow: PropTypes.bool.isRequired
 	}),
-	actionColumnWidth: React.PropTypes.number.isRequired,
-	onEvent: React.PropTypes.func
+	actionColumnWidth: PropTypes.number.isRequired,
+	onEvent: PropTypes.func
 };
 
 export default TableHeader;

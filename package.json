@@ -17,7 +17,6 @@
     "dist-lib": "babel src --out-dir lib"
   },
   "devDependencies": {
-    "babel": "^6.3.13",
     "babel-cli": "^6.3.17",
     "babel-core": "^6.3.13",
     "babel-eslint": "^6.1.2",
@@ -52,5 +51,11 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
+  },
+  "dependencies": {
+    "moment": "^2.18.1",
+    "react": "^15.5.4",
+    "react-addons-update": "^15.5.2",
+    "react-dom": "^15.5.4"
   }
 }

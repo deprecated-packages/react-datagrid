@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import {CLEAR_FILTER_BUTTON_CLICK, FILTER_BUTTON_CLICK} from "./actions";
 import {getColumnsToRender} from "./columnsHelper";
@@ -77,16 +78,23 @@ class TableHeaderFilter extends React.Component {
 }
 
 TableHeaderFilter.propTypes = {
-	model: React.PropTypes.shape({
-		columns: React.PropTypes.object.isRequired,
-		filter: React.PropTypes.object.isRequired,
-		labels: React.PropTypes.shape({
-			filter: React.PropTypes.string.isRequired,
-			clearFilter: React.PropTypes.string.isRequired
+	model: PropTypes.shape({
+		columns: PropTypes.object.isRequired,
+		filter: PropTypes.object.isRequired,
+		labels: PropTypes.shape({
+			filter: PropTypes.string.isRequired,
+			clearFilter: PropTypes.string.isRequired
 		}),
-		narrow: React.PropTypes.bool.isRequired
+		icons: PropTypes.shape({
+			sortDownIcon: PropTypes.string,
+			sortUpIcon: PropTypes.string,
+			menuIcon: PropTypes.string,
+			removeIcon: PropTypes.string,
+			filterIcon: PropTypes.string
+		}),
+		narrow: PropTypes.bool.isRequired
 	}),
-	onEvent: React.PropTypes.func
+	onEvent: PropTypes.func
 };
 
 export default TableHeaderFilter;

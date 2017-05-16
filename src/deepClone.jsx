@@ -1,5 +1,8 @@
 /*eslint no-undefined: 0*/
 /*eslint no-undef-init: 0*/
+/*eslint no-constant-condition: 0*/
+/*eslint max-depth: 0*/
+/*eslint max-statements: 0*/
 "use strict";
 
 export default function _clone(item) {

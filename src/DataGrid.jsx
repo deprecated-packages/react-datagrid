@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
@@ -127,49 +128,49 @@ class DataGrid extends React.Component {
 }
 
 DataGrid.propTypes = {
-	className: React.PropTypes.string,
-	tableClassName: React.PropTypes.string,
-	onEvent: React.PropTypes.func,
-	onResize: React.PropTypes.func,
-	scrollBarWidth: React.PropTypes.number.isRequired,
-	actionColumnWidth: React.PropTypes.number.isRequired,
-	model: React.PropTypes.shape({
-		idColumn: React.PropTypes.string.isRequired,
-		items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-		selected: React.PropTypes.array.isRequired,
-		edit: React.PropTypes.shape({
-			buttons: React.PropTypes.object.isRequired,
-			selected: React.PropTypes.array.isRequired
+	className: PropTypes.string,
+	tableClassName: PropTypes.string,
+	onEvent: PropTypes.func,
+	onResize: PropTypes.func,
+	scrollBarWidth: PropTypes.number.isRequired,
+	actionColumnWidth: PropTypes.number.isRequired,
+	model: PropTypes.shape({
+		idColumn: PropTypes.string.isRequired,
+		items: PropTypes.arrayOf(PropTypes.object).isRequired,
+		selected: PropTypes.array.isRequired,
+		edit: PropTypes.shape({
+			buttons: PropTypes.object.isRequired,
+			selected: PropTypes.array.isRequired
 		}).isRequired,
-		dataSources: React.PropTypes.object.isRequired,
-		columns: React.PropTypes.object.isRequired,
-		sort: React.PropTypes.shape({
-			order: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-			columns: React.PropTypes.object.isRequired
+		dataSources: PropTypes.object.isRequired,
+		columns: PropTypes.object.isRequired,
+		sort: PropTypes.shape({
+			order: PropTypes.arrayOf(PropTypes.string).isRequired,
+			columns: PropTypes.object.isRequired
 		}).isRequired,
-		filter: React.PropTypes.object.isRequired,
-		headerActions: React.PropTypes.object.isRequired,
-		actions: React.PropTypes.object.isRequired,
-		settings: React.PropTypes.shape({
-			header: React.PropTypes.bool,
-			filterHeader: React.PropTypes.bool,
-			footer: React.PropTypes.bool,
-			title: React.PropTypes.bool,
-			infiniteScroll: React.PropTypes.bool,
-			editableColumns: React.PropTypes.bool
+		filter: PropTypes.object.isRequired,
+		headerActions: PropTypes.object.isRequired,
+		actions: PropTypes.object.isRequired,
+		settings: PropTypes.shape({
+			header: PropTypes.bool,
+			filterHeader: PropTypes.bool,
+			footer: PropTypes.bool,
+			title: PropTypes.bool,
+			infiniteScroll: PropTypes.bool,
+			editableColumns: PropTypes.bool
 		}).isRequired,
-		labels: React.PropTypes.shape({
-			title: React.PropTypes.string,
-			records: React.PropTypes.string,
-			filter: React.PropTypes.string,
-			itemsPerPage: React.PropTypes.string
+		labels: PropTypes.shape({
+			title: PropTypes.string,
+			records: PropTypes.string,
+			filter: PropTypes.string,
+			itemsPerPage: PropTypes.string
 		}).isRequired,
-		pager: React.PropTypes.shape({
-			currentPageSize: React.PropTypes.number,
-			currentPage: React.PropTypes.number,
-			count: React.PropTypes.number
+		pager: PropTypes.shape({
+			currentPageSize: PropTypes.number,
+			currentPage: PropTypes.number,
+			count: PropTypes.number
 		}).isRequired,
-		narrow: React.PropTypes.bool
+		narrow: PropTypes.bool
 	}).isRequired
 };
 

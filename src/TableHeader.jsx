@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import {HEADER_BUTTON_CLICK, HEADER_CLICK} from "./actions";
 import TableHeaderFilter from "./TableHeaderFilter";
@@ -50,6 +51,9 @@ class TableHeader extends React.Component {
 	renderTitleCells() {
 		if (!this.props.model.narrow) {
 			return getColumnsToRender(this.props.model.columns).map(this.renderTitleCell);
+		}
+		else {
+			return null;
 		}
 	}
 
@@ -168,21 +172,28 @@ class TableHeader extends React.Component {
 }
 
 TableHeader.propTypes = {
-	model: React.PropTypes.shape({
-		sort: React.PropTypes.shape({
-			order: React.PropTypes.array.isRequired,
-			columns: React.PropTypes.object.isRequired
+	model: PropTypes.shape({
+		sort: PropTypes.shape({
+			order: PropTypes.array.isRequired,
+			columns: PropTypes.object.isRequired
 		}).isRequired,
-		columns: React.PropTypes.object.isRequired,
-		headerActions: React.PropTypes.object.isRequired,
-		settings: React.PropTypes.shape({
-			filterHeader: React.PropTypes.bool.isRequired,
-			editableColumns: React.PropTypes.bool.isRequired
+		columns: PropTypes.object.isRequired,
+		headerActions: PropTypes.object.isRequired,
+		settings: PropTypes.shape({
+			filterHeader: PropTypes.bool.isRequired,
+			editableColumns: PropTypes.bool.isRequired
 		}).isRequired,
-		narrow: React.PropTypes.bool.isRequired
+		narrow: PropTypes.bool.isRequired,
+		icons: PropTypes.shape({
+			sortDownIcon: PropTypes.string,
+			sortUpIcon: PropTypes.string,
+			menuIcon: PropTypes.string,
+			removeIcon: PropTypes.string,
+			filterIcon: PropTypes.string
+		})
 	}),
-	actionColumnWidth: React.PropTypes.number.isRequired,
-	onEvent: React.PropTypes.func
+	actionColumnWidth: PropTypes.number.isRequired,
+	onEvent: PropTypes.func
 };
 
 export default TableHeader;

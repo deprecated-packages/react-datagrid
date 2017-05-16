@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import autobind from "./autobind";
 import {SELECT_MENU_ITEM} from "./actions";
 
@@ -97,16 +98,16 @@ class DropdownMenu extends React.Component {
 }
 
 DropdownMenu.propTypes = {
-	model: React.PropTypes.object.isRequired,
-	name: React.PropTypes.string.isRequired,
-	label: React.PropTypes.string.isRequired,
-	icon: React.PropTypes.string,
-	items: React.PropTypes.array.isRequired,
-	menuClassName: React.PropTypes.string,
-	className: React.PropTypes.string,
-	onEvent: React.PropTypes.func.isRequired,
-	groups: React.PropTypes.bool,
-	selected: React.PropTypes.array.isRequired
+	model: PropTypes.object.isRequired,
+	name: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+	icon: PropTypes.string,
+	items: PropTypes.array.isRequired,
+	menuClassName: PropTypes.string,
+	className: PropTypes.string,
+	onEvent: PropTypes.func.isRequired,
+	groups: PropTypes.bool,
+	selected: PropTypes.array.isRequired
 };
 
 export default DropdownMenu;

@@ -14,8 +14,15 @@ class Select extends React.Component {
 			showMenu: false,
 			selectedMenuItemIndex: -1,
 			input: "",
-			focus: false
+			focus: false,
+			simpleValueCache: {}//this is label cache for values
 		};
+	}
+
+	componentDidMount() {
+		if (this.props.simpleValue) {
+			this._loadData("");//this will also set the simpleValueCache
+		}
 	}
 
 	componentDidUpdate() {
@@ -124,17 +131,28 @@ class Select extends React.Component {
 	_loadData(input) {
 		this.props.loadOptions(input, (err, data) => {
 			if (!err) {
+				this._setupSimpleValueLabelCache(data.options);
 				let options = data.options.filter(this.selectValuesFilter.bind(this, this._getSanitizeValue()));
 				if (this.props.creatable && options.length === 0) {
 					options.push({
 						creatable: true,
-						value: "create",
-						label: this.props.promptTextCreator(input)
+						[this.props.valueKey]: "create",
+						[this.props.labelKey]: this.props.promptTextCreator(input)
 					});
 				}
 				this.setState({options: options});
 			}
 		});
+	}
+
+	_setupSimpleValueLabelCache(options) {
+		if (this.props.simpleValue) {
+			const simpleValueCache = {};
+			options.forEach(o => {
+				simpleValueCache[o[this.props.valueKey]] = o[this.props.labelKey];
+			});
+			this.setState({simpleValueCache: simpleValueCache});
+		}
 	}
 
 	_fireValueChange(index) {
@@ -143,7 +161,7 @@ class Select extends React.Component {
 			return;
 		}
 		if (value.creatable) {
-			value = {value: this.state.input, label: this.state.input};
+			value = {[this.props.valueKey]: this.state.input, [this.props.labelKey]: this.state.input};
 		}
 		if (this.props.multi) {
 			const values = deepClone(this._getSanitizeValue());
@@ -155,7 +173,15 @@ class Select extends React.Component {
 	}
 
 	_saveValue(value) {
-		this.props.onChange(value);
+		if (this.props.simpleValue) {
+			if (this.props.multi) {
+				this.props.onChange(value.map(v => v[this.props.valueKey]));
+			} else {
+				this.props.onChange(value[this.props.valueKey]);
+			}
+		} else {
+			this.props.onChange(value);
+		}
 	}
 
 	_setInputToSelected(index) {
@@ -164,18 +190,51 @@ class Select extends React.Component {
 		}
 	}
 
+	_getSimpleValueLabelFromCache(simpleValue) {
+		if (this.state.simpleValueCache.hasOwnProperty(simpleValue)) {
+			return this.state.simpleValueCache[simpleValue];
+		} else {
+			return simpleValue;
+		}
+	}
+
+	_getSanitizedSimpleValue(simpleValue) {
+		if (typeof simpleValue === "string") {
+			return {
+				[this.props.valueKey]: simpleValue,
+				[this.props.labelKey]: this._getSimpleValueLabelFromCache(simpleValue)
+			};
+		} else if (typeof simpleValue === "number") {
+			return {
+				[this.props.valueKey]: simpleValue,
+				[this.props.labelKey]: this._getSimpleValueLabelFromCache(simpleValue)
+			};
+		} else if (simpleValue === null) {
+			return {[this.props.valueKey]: null, [this.props.labelKey]: ""};
+		} else {
+			return {
+				[this.props.valueKey]: JSON.stringify(simpleValue),
+				[this.props.labelKey]: JSON.stringify(simpleValue)
+			};
+		}
+	}
+
 	_getSanitizeValue() {
 		if (this.props.multi) {
 			if (Array.isArray(this.props.value)) {
-				return this.props.value;
+				if (this.props.simpleValue) {
+					return this.props.value.map(this._getSanitizedSimpleValue);
+				} else {
+					return this.props.value;
+				}
 			} else {
 				return [];
 			}
 		} else {
-			if (this.props.value) {
-				return this.props.value;
+			if (this.props.simpleValue) {
+				return this._getSanitizedSimpleValue(this.props.value);
 			} else {
-				return {value: "", label: ""};
+				return this.props.value;
 			}
 		}
 	}
@@ -297,7 +356,7 @@ class Select extends React.Component {
 
 	renderClearable() {
 		if (this.props.clearable) {
-			return <div className="clear-btn" onClick={this.onClear}><i className={this.props.icons.clear} /></div>;
+			return <div className="clear-btn" onClick={this.onClear}><i className={this.props.icons.clear}/></div>;
 		} else {
 			return null;
 		}
@@ -365,7 +424,7 @@ Select.propTypes = {
 	icons: PropTypes.shape({
 		caret: PropTypes.string.isRequired,
 		removeTag: PropTypes.string.isRequired,
-		clear: PropTypes.string.isRequired,
+		clear: PropTypes.string.isRequired
 	}),
 	disabled: PropTypes.any,
 	loadOptions: PropTypes.func.isRequired,
@@ -373,7 +432,8 @@ Select.propTypes = {
 	valueRenderer: PropTypes.func,
 	optionRenderer: PropTypes.func,
 	promptTextCreator: PropTypes.func,
-	placeholder: PropTypes.string
+	placeholder: PropTypes.string,
+	simpleValue: PropTypes.bool
 };
 
 export default Select;

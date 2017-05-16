@@ -48,6 +48,7 @@ class TableRowEditor extends React.Component {
 				valueKey={info.valueId}
 				labelKey={info.labelId}
 				clearable={info.clearable}
+				icons={this.props.icons}
 				onChange={this.onChangeSelectValue.bind(this, name)}
 			/>;
 		} else if (info.editType === "checkbox") {
@@ -144,6 +145,7 @@ class TableRowEditor extends React.Component {
 
 TableRowEditor.propTypes = {
 	item: PropTypes.object.isRequired,
+	icons: PropTypes.any,
 	dataSources: PropTypes.object,
 	columns: PropTypes.object.isRequired,
 	actions: PropTypes.object,

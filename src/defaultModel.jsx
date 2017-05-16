@@ -47,6 +47,9 @@ export default {
 		sortDownIcon: "icon-sort-down",
 		menuIcon: "icon-table",
 		nextIcon: "icon-caret-left",
-		prevIcon: "icon-caret-right"
+		prevIcon: "icon-caret-right",
+		caret: "icon-caret-down",
+		removeTag: "icon-remove",
+		clear: "icon-remove"
 	}
 };

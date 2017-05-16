@@ -49,6 +49,7 @@ class DataGrid extends React.Component {
 				actions={this.props.model.edit.buttons}
 				narrow={this.props.model.narrow}
 				key={item[this.props.model.idColumn]}
+				icons={this.props.model.icons}
 			/>;
 		} else {
 			return <TableRow
@@ -135,6 +136,7 @@ DataGrid.propTypes = {
 	scrollBarWidth: PropTypes.number.isRequired,
 	actionColumnWidth: PropTypes.number.isRequired,
 	model: PropTypes.shape({
+		icons: PropTypes.any,
 		idColumn: PropTypes.string.isRequired,
 		items: PropTypes.arrayOf(PropTypes.object).isRequired,
 		selected: PropTypes.array.isRequired,

@@ -104,9 +104,9 @@ class Select extends React.Component {
 
 	renderTag(i, key) {
 		return <span className="tag" key={key}>
-			{this.props.valueRenderer(i)}
+			{this.props.valueRenderer(this.props, i)}
 			<div className="tag-remove" onClick={this.onClickTag.bind(this, i[this.props.valueKey])}>
-				<i className="icon-m icon-m-close"></i>
+				<i className={this.props.icons.removeTag}/>
 			</div>
 		</span>;
 	}
@@ -197,7 +197,7 @@ class Select extends React.Component {
 			className += " selected";
 		}
 		return <div className={className} key={key} onMouseOver={this.onMouseOverMenuOption.bind(this, key)}
-			onClick={this.onClickMenuOption.bind(this, key)}>{this.props.optionRenderer(i)}</div>;
+			onClick={this.onClickMenuOption.bind(this, key)}>{this.props.optionRenderer(this.props, i)}</div>;
 	}
 
 	onClickHider() {
@@ -297,7 +297,7 @@ class Select extends React.Component {
 
 	renderClearable() {
 		if (this.props.clearable) {
-			return <div className="clear-btn" onClick={this.onClear}><i className="icon-m icon-m-close" /></div>;
+			return <div className="clear-btn" onClick={this.onClear}><i className={this.props.icons.clear} /></div>;
 		} else {
 			return null;
 		}
@@ -324,7 +324,7 @@ class Select extends React.Component {
 				{this.renderTags()}
 				{this.renderInput()}
 				<div className="caret-btn" onClick={this.onCaretDown}>
-					<i className="icon-lg icon-m icon-m-caret-down"/>
+					<i className={this.props.icons.caret}/>
 				</div>
 				{this.renderClearable()}
 			</div>
@@ -335,14 +335,19 @@ class Select extends React.Component {
 }
 
 Select.defaultProps = {
-	valueRenderer: function (item) {
-		return item.label;
+	valueRenderer: function (props, item) {
+		return item[props.labelKey];
 	},
-	optionRenderer: function (item) {
-		return item.label;
+	optionRenderer: function (props, item) {
+		return item[props.labelKey];
 	},
 	promptTextCreator: function (label) {
 		return "Create \"" + label + "\"";
+	},
+	icons: {
+		caret: "icon-lg icon-m icon-m-caret-down",
+		removeTag: "icon-m icon-m-close",
+		clear: "icon-m icon-m-close"
 	},
 	className: "",
 	labelKey: "label",
@@ -357,6 +362,11 @@ Select.propTypes = {
 	valueKey: PropTypes.string,
 	labelKey: PropTypes.string,
 	value: PropTypes.any,
+	icons: PropTypes.shape({
+		caret: PropTypes.string.isRequired,
+		removeTag: PropTypes.string.isRequired,
+		clear: PropTypes.string.isRequired,
+	}),
 	disabled: PropTypes.any,
 	loadOptions: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,

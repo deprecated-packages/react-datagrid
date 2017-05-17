@@ -220,23 +220,35 @@ class Select extends React.Component {
 	}
 
 	_getSanitizeValue() {
+		let retval = null;
 		if (this.props.multi) {
 			if (Array.isArray(this.props.value)) {
 				if (this.props.simpleValue) {
-					return this.props.value.map(this._getSanitizedSimpleValue);
+					retval = this.props.value.map(this._getSanitizedSimpleValue);
 				} else {
-					return this.props.value;
+					retval = this.props.value;
 				}
 			} else {
-				return [];
+				retval = [];
 			}
 		} else {
 			if (this.props.simpleValue) {
-				return this._getSanitizedSimpleValue(this.props.value);
+				retval = this._getSanitizedSimpleValue(this.props.value);
 			} else {
-				return this.props.value;
+				if (this.props.value === null) {
+					retval = {[this.props.valueKey]: null, [this.props.labelKey]: ""};
+				} else if (typeof this.props.value === "object") {
+					retval = this.props.value;
+				} else {
+					retval = {
+						[this.props.valueKey]: JSON.stringify(this.props.value),
+						[this.props.labelKey]: JSON.stringify(this.props.value)
+					};
+				}
 			}
 		}
+
+		return retval;
 	}
 
 	/***MENU AUTOCOMPLETE***/
@@ -255,6 +267,7 @@ class Select extends React.Component {
 		if (key === this.state.selectedMenuItemIndex) {
 			className += " selected";
 		}
+
 		return <div className={className} key={key} onMouseOver={this.onMouseOverMenuOption.bind(this, key)}
 			onClick={this.onClickMenuOption.bind(this, key)}>{this.props.optionRenderer(this.props, i)}</div>;
 	}

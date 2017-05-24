@@ -92,6 +92,7 @@ class Select extends React.Component {
 			inputValue = "";
 		}
 		return <input value={inputValue}
+			ref={input => this.input = input}
 			disabled={this.props.disabled}
 			placeholder={this._getPlaceholder()}
 			onClick={this.onInputClick}
@@ -368,11 +369,19 @@ class Select extends React.Component {
 	}
 
 	renderClearable() {
-		if (this.props.clearable) {
-			return <div className="clear-btn" onClick={this.onClear}><i className={this.props.icons.clear}/></div>;
-		} else {
+		if (!this.props.clearable) {
 			return null;
 		}
+		if (this.props.multi) {
+			if (this._getSanitizeValue().length === 0) {
+				return null;
+			}
+		} else {
+			if (!this.props.value) {
+				return null;
+			}
+		}
+		return <div className="clear-btn" onClick={this.onClear}><i className={this.props.icons.clear}/></div>;
 	}
 
 	_getClassName() {
@@ -389,10 +398,14 @@ class Select extends React.Component {
 		return className;
 	}
 
+	onClickSelectLine() {
+		this._showMenu();
+	}
+
 	render() {
 		return <div className={this._getClassName()} style={{position: "relative"}}
 			ref={component => this.component = component}>
-			<div className="select-line" style={{flex: ""}}>
+			<div className="select-line" style={{flex: ""}} onClick={this.onClickSelectLine}>
 				{this.renderTags()}
 				{this.renderInput()}
 				<div className="caret-btn" onClick={this.onCaretDown}>

@@ -288,7 +288,7 @@ class Select extends React.Component {
 
 	renderMenu() {
 		if (this.state.showMenu) {
-			return <div style={{position: "relative"}}>
+			return <div style={{position: "fixed", zIndex: 999999}}>
 				<div style={{top: 0, left: 0, right: 0, bottom: 0, position: "fixed"}} onClick={this.onClickHider}/>
 				<div className="menu" ref={menu => this.menu = menu}>
 					{this.state.options.map(this.renderMenuOption)}

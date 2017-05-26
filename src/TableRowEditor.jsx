@@ -50,6 +50,7 @@ class TableRowEditor extends React.Component {
 				clearable={info.clearable}
 				simpleValue={true}
 				icons={this.props.icons}
+				menuStyleFixed={true}
 				onChange={this.onChangeSelectValue.bind(this, name)}
 			/>;
 		} else if (info.editType === "checkbox") {

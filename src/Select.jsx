@@ -29,6 +29,13 @@ class Select extends React.Component {
 		if (this.menu && this.component) {
 			this.menu.style.width = this.component.clientWidth + "px";
 		}
+		if (this.input) {
+			let number = this.component.clientWidth - this.caret.clientWidth;
+			if (this.tags) {
+				number -= this.tags.clientWidth;
+			}
+			this.input.style.width = number + "px";
+		}
 	}
 
 	/***INPUT FIELD***/
@@ -111,7 +118,7 @@ class Select extends React.Component {
 	}
 
 	renderTag(i, key) {
-		return <span className="tag" key={key}>
+		return <span className="tag" key={key} ref={tags => this.tags = tags}>
 			{this.props.valueRenderer(this.props, i)}
 			<div className="tag-remove" onClick={this.onClickTag.bind(this, i[this.props.valueKey])}>
 				<i className={this.props.icons.removeTag}/>
@@ -288,7 +295,13 @@ class Select extends React.Component {
 
 	renderMenu() {
 		if (this.state.showMenu) {
-			return <div style={{position: "fixed", zIndex: 999999}}>
+			let style = {};
+			if (this.props.menuStyleFixed) {
+				style = {position: "fixed", zIndex: 999999};
+			} else {
+				style = {position: "relative"};
+			}
+			return <div style={style}>
 				<div style={{top: 0, left: 0, right: 0, bottom: 0, position: "fixed"}} onClick={this.onClickHider}/>
 				<div className="menu" ref={menu => this.menu = menu}>
 					{this.state.options.map(this.renderMenuOption)}
@@ -408,7 +421,7 @@ class Select extends React.Component {
 			<div className="select-line" style={{flex: ""}} onClick={this.onClickSelectLine}>
 				{this.renderTags()}
 				{this.renderInput()}
-				<div className="caret-btn" onClick={this.onCaretDown}>
+				<div className="caret-btn" ref={caret => this.caret = caret} onClick={this.onCaretDown}>
 					<i className={this.props.icons.caret}/>
 				</div>
 				{this.renderClearable()}
@@ -458,6 +471,7 @@ Select.propTypes = {
 	valueRenderer: PropTypes.func,
 	optionRenderer: PropTypes.func,
 	promptTextCreator: PropTypes.func,
+	menuStyleFixed: PropTypes.bool,
 	placeholder: PropTypes.string,
 	simpleValue: PropTypes.bool
 };

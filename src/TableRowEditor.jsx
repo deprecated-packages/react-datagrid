@@ -32,8 +32,21 @@ class TableRowEditor extends React.Component {
 		this.setState({item: item});
 	}
 
+	_normalize(string) {
+		return string.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+	}
+
+	_optionLabelMatch(input, info, i) {
+		if (input && input !== "") {
+			return i[info.labelId] && this._normalize(i[info.labelId]).match(this._normalize(input));
+		} else {
+			return true;
+		}
+	}
+
 	loadOptions(info, input, callback) {
-		const options = this.props.dataSources[info.dataSource];
+		let options = this.props.dataSources[info.dataSource];
+		options = options.filter(this._optionLabelMatch.bind(this, input, info));
 		return callback(null, {options});
 	}
 

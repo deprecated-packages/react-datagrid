@@ -10,6 +10,11 @@ export default {
 	},
 	filter: {},
 	headerActions: {},
+	classNameFactories: {
+		row: function() {
+			return null;
+		}
+	},
 	actions: {},
 	settings: {
 		header: true,

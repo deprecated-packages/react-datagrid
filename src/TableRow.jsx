@@ -103,6 +103,9 @@ class TableRow extends React.Component {
 
 	render() {
 		let className = this.props.selected ? "active" : "";
+		if (this.props.className) {
+			className += " " + this.props.className;
+		}
 		return <tr onClick={this.onRowClick} className={className}>
 			{this.renderRowBody()}
 			<td className="column-right actions">
@@ -119,7 +122,8 @@ TableRow.propTypes = {
 	actions: PropTypes.object,
 	onEvent: PropTypes.func.isRequired,
 	selected: PropTypes.bool.isRequired,
-	narrow: PropTypes.bool.isRequired
+	narrow: PropTypes.bool.isRequired,
+	className: PropTypes.string
 };
 
 TableRow.defaultProps = {

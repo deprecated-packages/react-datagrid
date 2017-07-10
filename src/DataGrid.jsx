@@ -54,6 +54,7 @@ class DataGrid extends React.Component {
 		} else {
 			return <TableRow
 				item={item}
+				className={this.props.model.classNameFactories.row(item)}
 				selected={selected}
 				dataSources={this.props.model.dataSources}
 				onEvent={this.props.onEvent}

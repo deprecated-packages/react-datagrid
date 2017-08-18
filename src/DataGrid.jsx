@@ -173,7 +173,10 @@ DataGrid.propTypes = {
 			currentPage: PropTypes.number,
 			count: PropTypes.number
 		}).isRequired,
-		narrow: PropTypes.bool
+		narrow: PropTypes.bool,
+		classNameFactories: PropTypes.shape({
+			row: PropTypes.any.isRequired
+		}).isRequired
 	}).isRequired
 };
 

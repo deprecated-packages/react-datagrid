@@ -20,6 +20,12 @@ class TableRowEditor extends React.Component {
 		this.setState({item: nextProps.item});
 	}
 
+	onChangeValueCheckbox(e) {
+		const item = deepClone(this.state.item);
+		item[e.target.name] = !item[e.target.name];
+		this.setState({item: item});
+	}
+
 	onChangeValue(e) {
 		const item = deepClone(this.state.item);
 		item[e.target.name] = e.target.value;
@@ -71,7 +77,7 @@ class TableRowEditor extends React.Component {
 				checked={value ? "checked" : false}
 				name={name}
 				type="checkbox"
-				onChange={this.onChangeValue}
+				onChange={this.onChangeValueCheckbox}
 			/>;
 		} else {
 			return <input

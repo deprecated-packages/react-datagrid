@@ -45,7 +45,6 @@
     "mocha-babel": "^3.0.0",
     "postcss-normalize-url": "^3.0.7",
     "raw-loader": "^0.5.1",
-    "react-datepicker": "^0.33.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",

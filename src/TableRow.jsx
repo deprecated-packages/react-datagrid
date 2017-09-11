@@ -49,9 +49,7 @@ class TableRow extends React.Component {
 		let info = this.props.columns[name];
 		if (info.show) {
 			return <td className={"table-cell-" + name} key={name}>
-				<span className="ellipsis-clip">
-					{this.renderNarrowOrNormal(info, name)}
-				</span>
+				{this.renderNarrowOrNormal(info, name)}
 			</td>;
 		} else {
 			return null;

@@ -1,12 +1,15 @@
 .simple-select {
 	@input-height: 28px;
 	@padding: 5px;
-	@select-color: #dedede;
+	@select-bg-color: @input-bg;
+	@tag-bg-color: @brand-primary;
 	position: relative;
+	width: 100%;
 	//background-color: #fff;
 	//Menu with options
 	.menu {
-		background-color: #fff;
+		background-color: @dropdown-bg;
+		color: @text-color;
 		z-index: 99999999;
 		position: absolute;
 		max-height: 300px;
@@ -17,7 +20,7 @@
 			min-height: @input-height;
 			line-height: @input-height;
 			&.selected {
-				background-color: @select-color;
+				background-color: @dropdown-caret-color;
 			}
 		}
 		box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
@@ -27,49 +30,11 @@
 		border-bottom: 2px solid @brand-primary;
 		padding-bottom: @padding - 1;
 	}
-	.select-line {
-		position: relative;
-		display: flex;
-		padding: @padding;
-		//box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
-		border-bottom: 1px solid #ddd;
-		input {
-			flex-grow: 1;
-			line-height: @input-height;
-			height: @input-height;
-			background: transparent;
-			border: 0;
-			outline: 0;
-		}
-		.clear-btn {
-			position: absolute;
-			right: 20px;
-			width: 20px;
+	//Values in multiselect
+	.tags {
+		display: inline-block;
+		.label {
 			display: inline-block;
-			text-align: center;
-			line-height: @input-height;
-			height: @input-height;
-		}
-		.caret-btn {
-			width: 20px;
-			display: inline-block;
-			text-align: center;
-			line-height: @input-height;
-			height: @input-height;
-		}
-		//Values in multiselect
-		.tag {
-			display: flex;
-			margin-right: 3px;
-			background-color: @select-color;
-			line-height: @input-height;
-			text-align: center;
-			padding-left: 5px;
-			.tag-remove {
-				text-align: center;
-				width: 20px;
-				display: inline-block;
-			}
 		}
 	}
 }

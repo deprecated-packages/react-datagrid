@@ -9,6 +9,7 @@ class Select extends React.Component {
 	constructor(props) {
 		super(props);
 		autobind(this);
+		this.tags = [];
 		this.state = {
 			options: [],
 			showMenu: false,
@@ -28,13 +29,6 @@ class Select extends React.Component {
 	componentDidUpdate() {
 		if (this.menu && this.component) {
 			this.menu.style.width = this.component.clientWidth + "px";
-		}
-		if (this.input) {
-			let number = this.component.clientWidth - this.caret.clientWidth;
-			if (this.tags) {
-				number -= this.tags.clientWidth;
-			}
-			this.input.style.width = number + "px";
 		}
 	}
 
@@ -93,13 +87,13 @@ class Select extends React.Component {
 
 	renderInput() {
 		//Use input value if we are showing menu or we are handling multi value select
-		//other wise just show the value of the props.value particulary the option label
+		//otherwise just show the value of the props.value particularly the option label
 		let inputValue = this.state.showMenu || this.props.multi ? this.state.input : this._getSanitizeValue()[this.props.labelKey];
 		if (!inputValue) {
 			inputValue = "";
 		}
 		return <input value={inputValue}
-			ref={input => this.input = input}
+			className="form-control"
 			disabled={this.props.disabled}
 			placeholder={this._getPlaceholder()}
 			onClick={this.onInputClick}
@@ -118,17 +112,22 @@ class Select extends React.Component {
 	}
 
 	renderTag(i, key) {
-		return <span className="tag" key={key} ref={tags => this.tags = tags}>
+		return <span className="m-r-5 label label-primary label-lg" key={key}>
 			{this.props.valueRenderer(this.props, i)}
-			<div className="tag-remove" onClick={this.onClickTag.bind(this, i[this.props.valueKey])}>
+			<span className="tag-remove clickable" onClick={this.onClickTag.bind(this, i[this.props.valueKey])}>
+				{" "}
 				<i className={this.props.icons.removeTag}/>
-			</div>
+			</span>
 		</span>;
 	}
 
 	renderTags() {
 		if (this.props.multi) {
-			return this._getSanitizeValue().map(this.renderTag);
+			const sanitizeValue = this._getSanitizeValue();
+			if (sanitizeValue.length === 0) {
+				return null;
+			}
+			return <span className="tags">{sanitizeValue.map(this.renderTag)}</span>;
 		} else {
 			return null;
 		}
@@ -185,7 +184,11 @@ class Select extends React.Component {
 			if (this.props.multi) {
 				this.props.onChange(value.map(v => v[this.props.valueKey]));
 			} else {
-				this.props.onChange(value[this.props.valueKey]);
+				if (value !== null) {
+					this.props.onChange(value[this.props.valueKey]);
+				} else {
+					this.props.onChange(null);
+				}
 			}
 		} else {
 			this.props.onChange(value);
@@ -394,7 +397,7 @@ class Select extends React.Component {
 				return null;
 			}
 		}
-		return <div className="clear-btn" onClick={this.onClear}><i className={this.props.icons.clear}/></div>;
+		return <div className="input-group-addon" onClick={this.onClear}><i className={this.props.icons.clear}/></div>;
 	}
 
 	_getClassName() {
@@ -412,19 +415,23 @@ class Select extends React.Component {
 	}
 
 	onClickSelectLine() {
-		this._showMenu();
+		// if (this.state.showMenu) {
+		// this._hideMenu();
+		// } else {
+		// this._showMenu();
+		// }
 	}
 
 	render() {
 		return <div className={this._getClassName()} style={{position: "relative"}}
 			ref={component => this.component = component}>
-			<div className="select-line" style={{flex: ""}} onClick={this.onClickSelectLine}>
-				{this.renderTags()}
+			{this.renderTags()}
+			<div className="input-group" style={{flex: ""}} onClick={this.onClickSelectLine}>
 				{this.renderInput()}
-				<div className="caret-btn" ref={caret => this.caret = caret} onClick={this.onCaretDown}>
+				{this.renderClearable()}
+				<div className="input-group-addon" onClick={this.onCaretDown}>
 					<i className={this.props.icons.caret}/>
 				</div>
-				{this.renderClearable()}
 			</div>
 
 			{this.renderMenu()}
